@@ -15,7 +15,7 @@ inFileWeb = max(list_of_files, key=os.path.getctime) # get the latest file
 inFileApp = sys.argv[1]
 print inFileApp +'test'
 # inFileApp = "~/Dropbox/work/molcajete/babysleep/1017_update/nyu-171001-1.csv"
-inFileDB = '/Users/Jay/Dropbox/work/molcajete/babysleep/0917_update/babysleep.db'
+inFileDB = '/users/heegeradmin/internal/babysleep.db'
 outFile = '/Users/Jay/Dropbox/work/molcajete/babysleep/1017_update/'
 
 sys.exit()
