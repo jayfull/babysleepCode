@@ -15,7 +15,7 @@ inFileApp = sys.argv[1] # /users/heegeradmin/internal/babysleepAppData
 inFileDB = '/users/heegeradmin/internal/babysleep.db'
 outFile = '/users/heegeradmin/Sites/sites/dashboard/assets/data/'
 
-sys.exit()
+# sys.exit()
 
 ######################
 ##### Web Data #######
