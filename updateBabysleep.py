@@ -108,7 +108,7 @@ conn.commit()
 ####### New Data Files #######
 ##############################
 
-os.chdir("/Users/Jay/Dropbox/work/molcajete/babysleep/1017_update/")
+os.chdir("/Users/Jay/Dropbox/work/molcajete/babysleep/babysleepCode")
 
 
 # generate TSV files
