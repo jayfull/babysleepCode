@@ -11,6 +11,7 @@ import sys
 os.chdir("/Users/Jay/Dropbox/work/molcajete/babysleep/1017_update/")
 list_of_files = glob.glob('webform_views_register_your_baby_for_the_research*') # * means all if need specific format then *.csv
 inFileWeb = max(list_of_files, key=os.path.getctime) # get the latest file
+print inFileWeb
 # inFileWeb = "~/Dropbox/work/molcajete/babysleep/1017_update/webform_views_register_your_baby_for_the_research_study20171001180017.csv"
 inFileApp = sys.argv[1]
 print inFileApp +'test'
@@ -18,7 +19,6 @@ print inFileApp +'test'
 inFileDB = '/Users/Jay/Dropbox/work/molcajete/babysleep/0917_update/babysleep.db'
 outFile = '/Users/Jay/Dropbox/work/molcajete/babysleep/1017_update/'
 
-sys.exit()
 
 ######################
 ##### Web Data #######
@@ -39,7 +39,8 @@ register_info_data['kID'] = register_info_data['kID'].astype(int) # convert kidI
 #convert DOB to datetime
 register_info_data['DOB'] = pd.to_datetime(register_info_data['DOB'])
 
-
+print 'test comptete'
+# sys.exit()
 
 
 ######################
@@ -70,8 +71,8 @@ mergedData['activityHour'] = mergedData['startTime'].dt.hour + 1 # add the start
 
 
 #calculate age for each activity 
-mergedData['activityAgeDays'] = mergedData['startTime'] - mergedData['DOB'] # in days (datetime type)
-mergedData['activityAgeDays']= (mergedData['activityAgeDays'] / np.timedelta64(1, 'D')).astype(int) # convert to integer
+mergedData['activityAgeDays'] = mergedData['startTime'].values - mergedData['DOB'].values # in days (datetime type)
+mergedData['activityAgeDays']= (mergedData['activityAgeDays'].values / np.timedelta64(1, 'D')).astype(int) # convert to integer
 mergedData['activityAgeWeeks']= (mergedData['activityAgeDays'] / 7).astype(int) # age in weeks (0 indexed)
 mergedData['activityAgeMonths']= (mergedData['activityAgeDays'] / 30).astype(int) # age in months (0 indexed)
 
