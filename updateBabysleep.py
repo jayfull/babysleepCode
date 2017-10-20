@@ -108,6 +108,9 @@ conn.commit()
 ####### New Data Files #######
 ##############################
 
+os.chdir("/Users/Jay/Dropbox/work/molcajete/babysleep/1017_update/")
+
+
 # generate TSV files
 execfile("eating_14812month.py")
 execfile("eating_eventsLogged.py")
