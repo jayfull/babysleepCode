@@ -104,6 +104,8 @@ conn.commit()
 ####### New Data Files #######
 ##############################
 
+os.chdir("/users/heegeradmin/internal/babysleepCode/")
+
 # generate TSV files
 execfile("eating_14812month.py")
 execfile("eating_eventsLogged.py")
