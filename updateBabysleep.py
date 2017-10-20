@@ -67,8 +67,8 @@ mergedData['activityHour'] = mergedData['startTime'].dt.hour + 1 # add the start
 
 
 #calculate age for each activity 
-mergedData['activityAgeDays'] = mergedData['startTime'] - mergedData['DOB'] # in days (datetime type)
-mergedData['activityAgeDays']= (mergedData['activityAgeDays'] / np.timedelta64(1, 'D')).astype(int) # convert to integer
+mergedData['activityAgeDays'] = mergedData['startTime'].values - mergedData['DOB'].values # in days (datetime type)
+mergedData['activityAgeDays']= (mergedData['activityAgeDays'].values / np.timedelta64(1, 'D')).astype(int) # convert to integer
 mergedData['activityAgeWeeks']= (mergedData['activityAgeDays'] / 7).astype(int) # age in weeks (0 indexed)
 mergedData['activityAgeMonths']= (mergedData['activityAgeDays'] / 30).astype(int) # age in months (0 indexed)
 
