@@ -89,7 +89,7 @@ c.execute('SELECT COUNT (*) \
 	FROM Kids') 
 prior_rows = c.fetchall() 
 prior_rows_int = prior_rows[0][0]
-print "Number of rows in the database prior to update: " + prior_rows_int
+print "Number of rows in the database prior to update: " + str(prior_rows_int)
 
 #append data to database
 mergedData.to_sql(con=conn, name='Kids', if_exists='append', flavor='sqlite', index=False)
@@ -107,7 +107,7 @@ c.execute('SELECT COUNT (*) \
 	FROM Kids') 
 post_rows = c.fetchall() 
 post_rows_int = post_rows[0][0]
-print "Number of rows in the database after update: " + post_rows_int
+print "Number of rows in the database after update: " + str(post_rows_int)
 
 sys.exit()
 
