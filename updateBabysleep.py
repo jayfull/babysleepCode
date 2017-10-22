@@ -107,9 +107,13 @@ c.execute('SELECT COUNT (*) \
 	FROM Kids') 
 post_rows = c.fetchall() 
 post_rows_int = post_rows[0][0]
-print "Number of rows in the database after update: " + str(post_rows_int)
+print "Number of rows in the database after the update: " + str(post_rows_int)
 
-sys.exit()
+if prior_rows_int >= post_rows_int:
+	print 'ERROR: No data added.'
+	print 'TIP: Check that you have set the path correctly to the new app data.'
+	print 'Exiting analysis. Data files were not updated.'
+	sys.exit()
 
 ##############################
 ####### New Data Files #######
