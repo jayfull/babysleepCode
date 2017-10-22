@@ -107,6 +107,7 @@ c.execute('SELECT COUNT (*) \
 post_rows = c.fetchall() 
 print "Number of rows in the database after update: " post_rows
 
+sys.exit()
 
 ##############################
 ####### New Data Files #######
