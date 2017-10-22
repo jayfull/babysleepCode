@@ -95,20 +95,21 @@ print "Number of rows in the database prior to update: " + str(prior_rows_int)
 mergedData.to_sql(con=conn, name='Kids', if_exists='append', flavor='sqlite', index=False)
 conn.commit()
 
-# delete duplicate entries
+# delete duplicate entries  (this will take a while)
 conn.execute('DELETE FROM Kids WHERE rowid NOT IN \
 (SELECT MIN(rowid) FROM Kids \
   GROUP BY entryID)') 
 conn.execute('vacuum')
 conn.commit()
 
-# get number of rows in the database prior to update
+# get number of rows in the database post to update
 c.execute('SELECT COUNT (*) \
 	FROM Kids') 
 post_rows = c.fetchall() 
 post_rows_int = post_rows[0][0]
 print "Number of rows in the database after the update: " + str(post_rows_int)
 
+# Error out if no new data being added
 if prior_rows_int >= post_rows_int:
 	print 'ERROR: No data added.'
 	print 'TIP: Check that you have set the path correctly to the new app data.'
