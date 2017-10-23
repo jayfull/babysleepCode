@@ -89,6 +89,8 @@ c.execute('SELECT COUNT (*) \
 	FROM Kids') 
 prior_rows = c.fetchall() 
 prior_rows_int = prior_rows[0][0]
+print ''
+print ''
 print "Number of rows in the database prior to update:  " + str(prior_rows_int)
 
 #append data to database
@@ -112,11 +114,11 @@ print "Number of rows in the database after the update: " + str(post_rows_int)
 # Error out if no new data being added
 if prior_rows_int >= post_rows_int:
 	print ' '
-	print 'ERROR: No data added.'
+	print 'WARNING: No new data was added to the database!'
+	print ''
 	print 'TIP: Check that you have set the path correctly to the new app data.'
 	print 'Exiting analysis. Data files were not updated.'
 	print ' '
-	sys.exit()
 
 ##############################
 ####### New Data Files #######
