@@ -113,12 +113,12 @@ print "Number of rows in the database after the update: " + str(post_rows_int)
 
 # Error out if no new data being added
 if prior_rows_int >= post_rows_int:
-	print ' '
+	print ''
 	print 'WARNING: No new data was added to the database!'
 	print ''
+	print 'Data files were not updated.'
 	print 'TIP: Check that you have set the path correctly to the new app data.'
-	print 'Exiting analysis. Data files were not updated.'
-	print ' '
+	print ''
 
 ##############################
 ####### New Data Files #######
