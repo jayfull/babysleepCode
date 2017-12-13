@@ -17,7 +17,7 @@ files = glob.glob("/users/heegeradmin/internal/babysleepAppData/*.csv")
 
 for file in files[0]:
 	sys.argv = [file]
-	execfile("updateBabysleep.py")
+	# execfile("updateBabysleep.py")
 
 
 # close the database connection
