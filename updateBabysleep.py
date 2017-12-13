@@ -36,6 +36,9 @@ register_info_data['kID'] = register_info_data['kID'].astype(int) # convert kidI
 #convert DOB to datetime
 register_info_data['DOB'] = pd.to_datetime(register_info_data['DOB'])
 
+# only include children that have and rID == 4. According to David these valid entries.
+register_info_data = register_info_data[register_info_data['rID'] == 4.0]
+
 
 
 
