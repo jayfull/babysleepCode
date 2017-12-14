@@ -3,8 +3,6 @@ import pickle
 shared = {
 "Foo":"Bar", 
 "Parrot":"Dead",
-"inFileDB" : '/users/heegeradmin/internal/babysleepDatabase/babysleep.db', #database location
-"outFile" : '/users/heegeradmin/Sites/sites/dashboard/assets/data/' #location of output files
 }
 
 fp = open("shared.pkl","w")
