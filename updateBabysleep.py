@@ -19,10 +19,19 @@ outFile = '/users/heegeradmin/Sites/sites/dashboard/assets/data/'
 
 
 ##############################
-####### New Data Files #######
+###### Data To Database ######
 ##############################
 
 os.chdir("/users/heegeradmin/internal/babysleepCode/")
+
+# Read, merge and write data to DB
+execfile("dataToDB.py")
+
+
+
+##############################
+####### New Data Files #######
+##############################
 
 # generate TSV files
 execfile("eating_14812month.py")
