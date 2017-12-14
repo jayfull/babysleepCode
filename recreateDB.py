@@ -5,10 +5,10 @@ import glob
 import os
 import sys
 
-inFileDB = sys.argv[1] # name of the DB must be given on the command line
+newDB = sys.argv[1] # name of the DB must be given on the command line
 
 # create new db and make connection
-conn = sqlite3.connect(inFileDB)
+conn = sqlite3.connect(newDB)
 conn.text_factory = str
 c = conn.cursor()
 
