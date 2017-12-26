@@ -13,6 +13,8 @@ inFileDB = sys.argv[1] # name of the DB must be given on the command line
 inFilesApp = glob.glob("/users/heegeradmin/internal/babysleepAppData/*.csv")
 # print inFilesApp
 
+
+os.chdir("/users/heegeradmin/internal/babysleepDatabase/")
 # create new db and make connection
 conn = sqlite3.connect(inFileDB)
 conn.text_factory = str

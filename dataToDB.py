@@ -5,9 +5,9 @@
 # removes duplicates
 
 print sys.argv
-inFileWeb = sys.argv[1]
+inFileWeb = sys.argv[0]
 print inFileWeb
-inFileApp = sys.argv[2]
+inFileApp = sys.argv[1]
 print inFileApp
 
 ######################
