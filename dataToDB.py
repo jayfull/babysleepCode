@@ -4,6 +4,9 @@
 # appends to DB
 # removes duplicates
 
+inFileWeb = sys.argv[1]
+inFileApp = sys.argv[2]
+
 ######################
 ##### Web Data #######
 ######################
@@ -69,9 +72,9 @@ mergedData['activityAgeMonths']= (mergedData['activityAgeDays'] / 30).astype(int
 ##############################
 
 # create new db and make connection
-conn = sqlite3.connect(inFileDB)
-conn.text_factory = str
-c = conn.cursor()
+# conn = sqlite3.connect(inFileDB)
+# conn.text_factory = str
+# c = conn.cursor()
 
 # get number of rows in the database prior to update
 c.execute('SELECT COUNT (*) \
