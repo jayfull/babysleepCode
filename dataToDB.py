@@ -86,10 +86,7 @@ try:
 	prior_rows = c.fetchall() 
 	prior_rows_int = prior_rows[0][0]
 except sqlite3.OperationalError:
-	prior_rows_int
-
-
-
+	prior_rows_int = 0
 print ''
 print ''
 print "Number of rows in the database prior to update:  " + str(prior_rows_int)
