@@ -24,9 +24,13 @@ c = conn.cursor()
 os.chdir("/users/heegeradmin/internal/babysleepCode/")
 for inFileApp in inFilesApp[:10]:
 	sys.argv = [inFileWeb, inFileApp]
-	print sys.argv
+	print inFileApp
 	execfile("dataToDB.py")
 
 
 # close the database connection
 conn.close() # close the connection to the database
+
+print ''
+print ''
+print "Babysleep database successfully recreated."

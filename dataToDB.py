@@ -94,7 +94,7 @@ conn.commit()
 
 # delete duplicate entries  (this will take a while)
 conn.execute('DELETE FROM Kids WHERE rowid NOT IN \
-(SELECT MIN(rowid) FROM Kids \
+(SELECT MAX(rowid) FROM Kids \
   GROUP BY entryID)') 
 conn.execute('vacuum')
 conn.commit()
