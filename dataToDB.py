@@ -86,6 +86,7 @@ except sqlite3.OperationalError:
 	prior_rows_int = 0
 print ''
 print ''
+print inFileApp
 print "Number of rows in the database prior to update:  " + str(prior_rows_int)
 
 #append data to database
