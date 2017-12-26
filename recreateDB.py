@@ -11,7 +11,7 @@ list_of_files = glob.glob('webform_views_register_your_baby_for_the_research*') 
 inFileWeb = max(list_of_files, key=os.path.getctime) # get the latest file
 inFileDB = sys.argv[1] # name of the DB must be given on the command line
 inFilesApp = glob.glob("/users/heegeradmin/internal/babysleepAppData/*.csv")
-print inFilesApp
+# print inFilesApp
 
 # create new db and make connection
 conn = sqlite3.connect(inFileDB)
@@ -21,7 +21,7 @@ c = conn.cursor()
 
 os.chdir("/users/heegeradmin/internal/babysleepCode/")
 for inFileApp in inFilesApp[0]:
-	print inFileApp
+	print inFilesApp
 	sys.argv = [inFileWeb, inFileApp]
 	execfile("dataToDB.py")
 
