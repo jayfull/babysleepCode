@@ -22,7 +22,7 @@ c = conn.cursor()
 
 
 os.chdir("/users/heegeradmin/internal/babysleepCode/")
-for inFileApp in inFilesApp[:1]:
+for inFileApp in inFilesApp[:10]:
 	sys.argv = [inFileWeb, inFileApp]
 	print sys.argv
 	execfile("dataToDB.py")
