@@ -4,11 +4,8 @@
 # appends to DB
 # removes duplicates
 
-print sys.argv
 inFileWeb = sys.argv[0]
-print inFileWeb
 inFileApp = sys.argv[1]
-print inFileApp
 
 ######################
 ##### Web Data #######
