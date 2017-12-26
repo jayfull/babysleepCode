@@ -5,8 +5,9 @@
 # removes duplicates
 
 inFileWeb = sys.argv[1]
-print inFileWeb
 inFileApp = sys.argv[2]
+print inFileWeb
+print inFileApp
 
 ######################
 ##### Web Data #######
