@@ -4,9 +4,10 @@
 # appends to DB
 # removes duplicates
 
+print sys.argv
 inFileWeb = sys.argv[1]
-inFileApp = sys.argv[2]
 print inFileWeb
+inFileApp = sys.argv[2]
 print inFileApp
 
 ######################
