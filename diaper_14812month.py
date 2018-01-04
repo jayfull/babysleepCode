@@ -29,7 +29,7 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
               (select k.kidID AS id, k.activityAgeMonths AS age, count(k.activity) AS total \
                 FROM Kids AS k \
                 Where k.activity == '"'Diaper'"' \
-                AND (k.activityAgeMonths BETWEEN 0 AND 11) \
+                AND (k.activityAgeMonths BETWEEN 0 AND ' y ') \
                 Group by k.kidID, k.activityAgeMonths) \
                 AS month \
              ON k2.kidID = month.id \
