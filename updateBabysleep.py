@@ -40,14 +40,14 @@ execfile("dataToDB.py")
 ##############################
 
 # generate TSV files
-execfile("eating_14812month.py")
-execfile("eating_eventsLogged.py")
+# execfile("eating_14812month.py")
+# execfile("eating_eventsLogged.py")
 execfile("diaper_14812month.py")
-execfile("diaper_eventsLogged.py")
-execfile("sleep_14812month.py")
-execfile("sleep_eventsLogged.py")
-execfile("sleep_boutDuration.py")
-execfile("sleep_sum.py")
+# execfile("diaper_eventsLogged.py")
+# execfile("sleep_14812month.py")
+# execfile("sleep_eventsLogged.py")
+# execfile("sleep_boutDuration.py")
+# execfile("sleep_sum.py")
 
 
 conn.close()

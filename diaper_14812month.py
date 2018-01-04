@@ -13,6 +13,9 @@
 ### Diaper_eventsLogged by month and hour
 ##############
 
+params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
+y = data.get('diaper').get('duration')
+print y
 
 ###################################
 # MONTH 1
