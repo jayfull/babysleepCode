@@ -2,6 +2,8 @@ import sqlite3
 import csv
 import os
 
+os.chdir('/users/heegeradmin/internal/babysleepDatabase/')
+
 inFileDB = '/users/heegeradmin/internal/babysleepDatabase/babysleep.db' #data base location
 
 csvWriter = csv.writer(open("babysleepDB.csv", "w")) # output file for csv dump
@@ -16,6 +18,5 @@ c.execute('SELECT * \
 	FROM Kids') 
 rows = c.fetchall() 
 
-os.chdir('/users/heegeradmin/internal/babysleepDatabase/')
 
 csvWriter.writerows(rows) # write out the query to the csv

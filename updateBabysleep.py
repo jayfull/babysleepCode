@@ -14,8 +14,8 @@ list_of_files = glob.glob('webform_views_register_your_baby_for_the_research*') 
 inFileWeb = "/users/heegeradmin/internal/ParticipantDataDumps/" + max(list_of_files, key=os.path.getctime) # get the latest file
 inFileApp = sys.argv[1] # /users/heegeradmin/internal/babysleepAppData
 inFileDB = '/users/heegeradmin/internal/babysleepDatabase/babysleep.db'
-# outFile = '/users/heegeradmin/Sites/sites/dashboard/assets/data/'
-outFile = '/users/heegeradmin/internal/babysleepDatabase/'
+outFile = '/users/heegeradmin/Sites/sites/dashboard/assets/data/'
+# outFile = '/users/heegeradmin/internal/babysleepDatabase/' # for testing dump to benign place
 
 # sys.exit()
 
