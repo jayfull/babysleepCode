@@ -1,0 +1,8 @@
+{
+	"diaper" : {
+		"duration": 11
+	},
+	"sleep" : {
+		"key" : "value"
+	}
+}

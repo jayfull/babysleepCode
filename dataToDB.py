@@ -93,12 +93,12 @@ print "Number of rows in the database prior to update:  " + str(prior_rows_int)
 mergedData.to_sql(con=conn, name='Kids', if_exists='append', flavor='sqlite', index=False)
 conn.commit()
 
-# delete duplicate entries  (this will take a while)
-conn.execute('DELETE FROM Kids WHERE rowid NOT IN \
-(SELECT MAX(rowid) FROM Kids \
-  GROUP BY entryID)') 
-conn.execute('vacuum')
-conn.commit()
+# # delete duplicate entries  (this will take a while)
+# conn.execute('DELETE FROM Kids WHERE rowid NOT IN \
+# (SELECT MAX(rowid) FROM Kids \
+#   GROUP BY entryID)') 
+# conn.execute('vacuum')
+# conn.commit()
 
 # get number of rows in the database post to update
 c.execute('SELECT COUNT (*) \
