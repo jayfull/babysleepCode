@@ -10,11 +10,19 @@
 # conn = sqlite3.connect('babysleep.db')
 # c = conn.cursor()
 
+# Pull in the parameters and put them in a tuple fo the SQL commmand
+params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
+min_duration = params.get('sleeping').get('min_duration')
+max_duration = params.get('sleeping').get('max_duration')
+durations = (min_duration, max_duration)
+
+
 # DAY
 c.execute('SELECT k.kidID, k.activityAgeMonths, 1.0*SUM(k.durationMin)/30 \
             FROM Kids AS k \
             WHERE k.activity == '"'Sleep'"' AND (k.activityHour BETWEEN 5 AND 18) AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
-            GROUP BY k.kidID, k.activityAgeMonths')
+            	AND (k.DurationMin BETWEEN ? AND ?) \
+            GROUP BY k.kidID, k.activityAgeMonths', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -38,7 +46,8 @@ dfDataAll = dfData2
 c.execute('SELECT k.kidID, k.activityAgeMonths, 1.0*SUM(k.durationMin)/30 \
             FROM Kids AS k \
             WHERE k.activity == '"'Sleep'"' AND (k.activityHour < 5 OR k.activityHour >= 17) AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
-            GROUP BY k.kidID, k.activityAgeMonths')
+            	AND (k.DurationMin BETWEEN ? AND ?) \
+            GROUP BY k.kidID, k.activityAgeMonths', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -63,7 +72,8 @@ dfDataAll = dfDataAll.join(dfData2, how='left', lsuffix='app', rsuffix='web', so
 c.execute('SELECT k.kidID, k.activityAgeMonths, 1.0*SUM(k.durationMin)/30 \
             FROM Kids AS k \
             WHERE k.activity == '"'Sleep'"' AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
-            GROUP BY k.kidID, k.activityAgeMonths')
+            	AND (k.DurationMin BETWEEN ? AND ?) \
+            GROUP BY k.kidID, k.activityAgeMonths', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
