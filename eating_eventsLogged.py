@@ -16,6 +16,12 @@
 # names
 
 
+# Pull in the parameters and put them in a tuple fo the SQL commmand
+params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
+min_duration = params.get('eating').get('min_duration')
+max_duration = params.get('eating').get('max_duration')
+durations = (min_duration, max_duration)
+
 ##############
 ### Eating_eventsLogged
 ##############
@@ -24,8 +30,8 @@
 c.execute('select 1.0*count(k.activity)/7, k.kidID, k.activityAgeWeeks \
             from Kids as k \
             Where (k.activity == '"'Bottle'"' OR k.activity == '"'Nursing'"' OR k.activity == '"'Solid Food'"') \
-            AND  (k.activityAgeWeeks BETWEEN 0 AND 103) \
-            Group by k.kidID, k.activityAgeWeeks')
+            AND  (k.activityAgeWeeks BETWEEN 0 AND 103) AND (k2.DurationMin BETWEEN ? AND ?) \
+            Group by k.kidID, k.activityAgeWeeks, durations')
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe

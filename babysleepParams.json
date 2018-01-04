@@ -4,8 +4,8 @@
 		"max_duration" : 100
 	},
 	"eating" : {
-		"min_duration" : 5,
-		"max_duration" : 100
+		"min_duration" : 1,
+		"max_duration" : 5
 	},
 	"sleeping" : {
 		"min_duration" : 10,
