@@ -31,7 +31,7 @@ c.execute('select 1.0*count(k.activity)/7, k.kidID, k.activityAgeWeeks \
             from Kids as k \
             Where (k.activity == '"'Bottle'"' OR k.activity == '"'Nursing'"' OR k.activity == '"'Solid Food'"') \
             AND  (k.activityAgeWeeks BETWEEN 0 AND 103) AND (k.DurationMin BETWEEN ? AND ?) \
-            Group by k.kidID, k.activityAgeWeeks, durations')
+            Group by k.kidID, k.activityAgeWeeks', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
