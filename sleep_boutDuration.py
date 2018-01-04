@@ -44,7 +44,7 @@ c.execute('SELECT k.kidID, k.activityAgeMonths, 1.0*AVG(k.durationMin) \
             FROM Kids AS k \
             WHERE k.activity == '"'Sleep'"' AND (k.activityHour < 5 OR k.activityHour >= 17) AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
             	 AND (k.DurationMin BETWEEN ? AND ?) \
-            GROUP BY k.kidID, k.activityAgeMonths' durations)
+            GROUP BY k.kidID, k.activityAgeMonths', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
