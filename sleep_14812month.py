@@ -10,8 +10,8 @@
 
 # Pull in the parameters and put them in a tuple fo the SQL commmand
 params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
-min_duration = params.get('sleep').get('min_duration')
-max_duration = params.get('sleep').get('max_duration')
+min_duration = params.get('sleeping').get('min_duration')
+max_duration = params.get('sleeping').get('max_duration')
 durations = (min_duration, max_duration)
 
 
