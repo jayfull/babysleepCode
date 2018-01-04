@@ -8,9 +8,15 @@
 # c = conn.cursor()
 
 
+# Pull in the parameters and put them in a tuple fo the SQL commmand
+params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
+min_duration = params.get('sleep').get('min_duration')
+max_duration = params.get('sleep').get('max_duration')
+durations = (min_duration, max_duration)
+
 
 ##############
-### Diaper_eventsLogged by month and hour
+### Sleep_eventsLogged by month and hour
 ##############
 
 
@@ -32,7 +38,8 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 0 AND k2.activity == '"'Sleep'"' \
-             GROUP BY k2.kidID, k2.activityHour')
+                AND (k2.DurationMin BETWEEN ? AND ?) \
+             GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -62,7 +69,8 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 3 AND k2.activity == '"'Sleep'"' \
-             GROUP BY k2.kidID, k2.activityHour')
+                AND (k2.DurationMin BETWEEN ? AND ?) \
+             GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -92,7 +100,8 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 7 AND k2.activity == '"'Sleep'"' \
-             GROUP BY k2.kidID, k2.activityHour')
+                AND (k2.DurationMin BETWEEN ? AND ?) \
+             GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -122,7 +131,8 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 11 AND k2.activity == '"'Sleep'"' \
-             GROUP BY k2.kidID, k2.activityHour')
+                AND (k2.DurationMin BETWEEN ? AND ?) \
+             GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
