@@ -12,7 +12,8 @@ params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepPara
 min_duration = params.get('eating').get('min_duration')
 max_duration = params.get('eating').get('max_duration')
 durations = (min_duration, max_duration)
-print min_duration max_duration
+print min_duration
+print max_duration
 
 
 ##############
