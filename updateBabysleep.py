@@ -4,6 +4,7 @@ import numpy as np
 import glob
 import os
 import sys
+import json
 
 ######################
 ####### Inputs #######
