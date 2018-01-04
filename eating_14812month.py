@@ -39,7 +39,7 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 0 AND (k2.activity == '"'Bottle'"' OR k2.activity == '"'Nursing'"' OR k2.activity == '"'Solid Food'"') \
-                AND (k2.DurationMin BETWEEN ? AND ? \
+                AND (k2.DurationMin BETWEEN ? AND ?) \
              GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
@@ -70,7 +70,7 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 3 AND (k2.activity == '"'Bottle'"' OR k2.activity == '"'Nursing'"' OR k2.activity == '"'Solid Food'"') \
-                AND (k2.DurationMin BETWEEN ? AND ? \
+                AND (k2.DurationMin BETWEEN ? AND ?) \
              GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
@@ -101,7 +101,7 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 7 AND (k2.activity == '"'Bottle'"' OR k2.activity == '"'Nursing'"' OR k2.activity == '"'Solid Food'"') \
-                AND (k2.DurationMin BETWEEN ? AND ? \
+                AND (k2.DurationMin BETWEEN ? AND ?) \
              GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
@@ -132,7 +132,7 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 11 AND (k2.activity == '"'Bottle'"' OR k2.activity == '"'Nursing'"' OR k2.activity == '"'Solid Food'"') \
-                AND (k2.DurationMin BETWEEN ? AND ? \
+                AND (k2.DurationMin BETWEEN ? AND ?) \
              GROUP BY k2.kidID, k2.activityHour', durations)
 data = c.fetchall() # output is list of tuples
 
