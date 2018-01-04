@@ -14,7 +14,7 @@
 ##############
 
 params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
-y = data.get('diaper').get('duration')
+y = params.get('diaper').get('duration')
 print y
 
 ###################################
