@@ -15,8 +15,10 @@
 
 params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
 y = params.get('diaper').get('duration')
+x = params.get('sleep').get('time')
+print x
 print y
-param = (y,)
+param = (x,y)
 
 ###################################
 # MONTH 1
@@ -30,7 +32,7 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
               (select k.kidID AS id, k.activityAgeMonths AS age, count(k.activity) AS total \
                 FROM Kids AS k \
                 Where k.activity == '"'Diaper'"' \
-                AND (k.activityAgeMonths BETWEEN 0 AND ?) \
+                AND (k.activityAgeMonths BETWEEN ? AND ?) \
                 Group by k.kidID, k.activityAgeMonths) \
                 AS month \
              ON k2.kidID = month.id \
