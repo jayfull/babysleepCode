@@ -17,7 +17,7 @@
 
 
 ##############
-### Diaper_eventsLogged
+### Eating_eventsLogged
 ##############
 
 #SQL query

@@ -1,8 +1,14 @@
 {
 	"diaper" : {
-		"duration": 11
+		"min_duration" : 0,
+		"max_duration" : 100
 	},
-	"sleep" : {
-		"time" : 0
+	"eating" : {
+		"min_duration" : 5,
+		"max_duration" : 100
+	},
+	"sleeping" : {
+		"min_duration" : 10,
+		"max_duration" : 840
 	}
 }

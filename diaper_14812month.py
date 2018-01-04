@@ -13,12 +13,6 @@
 ### Diaper_eventsLogged by month and hour
 ##############
 
-params = json.load(open('/users/heegeradmin/internal/babysleepCode/babysleepParams.json'))
-y = params.get('diaper').get('duration')
-x = params.get('sleep').get('time')
-print x
-print y
-param = (x,y)
 
 ###################################
 # MONTH 1
@@ -32,13 +26,13 @@ c.execute('SELECT k2.kidID, k2.activityHour, 1.0*count(k2.activity) / month.tota
               (select k.kidID AS id, k.activityAgeMonths AS age, count(k.activity) AS total \
                 FROM Kids AS k \
                 Where k.activity == '"'Diaper'"' \
-                AND (k.activityAgeMonths BETWEEN ? AND ?) \
+                AND (k.activityAgeMonths BETWEEN 0 AND 11) \
                 Group by k.kidID, k.activityAgeMonths) \
                 AS month \
              ON k2.kidID = month.id \
                 AND k2.activityAgeMonths = month.age \
              WHERE k2.activityAgeMonths == 0 AND k2.activity == '"'Diaper'"' \
-             GROUP BY k2.kidID, k2.activityHour', param)
+             GROUP BY k2.kidID, k2.activityHour')
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
