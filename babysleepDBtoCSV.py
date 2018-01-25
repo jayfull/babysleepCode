@@ -2,7 +2,7 @@ import sqlite3
 import csv
 import os
 
-os.chdir('/users/heegeradmin/internal/babysleepDatabase/')
+# os.chdir('/users/heegeradmin/internal/babysleepDatabase/')
 
 # inFileDB = '/users/heegeradmin/internal/babysleepDatabase/babysleep.db' #data base location
 
@@ -21,4 +21,4 @@ os.chdir('/users/heegeradmin/internal/babysleepDatabase/')
 
 # csvWriter.writerows(rows) # write out the query to the csv
 
-os.system("sqlite3 -header -csv babysleep.db "select * from Kids;" > babysleepDB.csv")
+os.system("sqlite3 -header -csv babysleep.db "'" select * from Kids;"'" > babysleepDB.csv")
