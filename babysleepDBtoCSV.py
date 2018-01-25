@@ -2,7 +2,7 @@ import sqlite3
 import csv
 import os
 
-# os.chdir('/users/heegeradmin/internal/babysleepDatabase/')
+os.chdir('/users/heegeradmin/internal/babysleepDatabase/')
 
 # inFileDB = '/users/heegeradmin/internal/babysleepDatabase/babysleep.db' #data base location
 
