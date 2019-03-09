@@ -18,11 +18,14 @@ durations = (min_duration, max_duration)
 
 
 # DAY
-c.execute('SELECT k.kidID, k.activityAgeMonths, 1.0*SUM(k.durationMin)/30 \
-            FROM Kids AS k \
-            WHERE k.activity == '"'Sleep'"' AND (k.activityHour BETWEEN 5 AND 18) AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
-            	AND (k.DurationMin BETWEEN ? AND ?) \
-            GROUP BY k.kidID, k.activityAgeMonths', durations)
+c.execute('SELECT SumDays.ID, SumDays.AgeMonths, 1.0*AVG(SumDays.MinsSleepDay)\
+            FROM \
+              (SELECT k.kidID AS ID, k.activityAgeMonths AS AgeMonths, k.activityAgeDays AS AgeDays, 1.0*SUM(k.durationMin) AS MinsSleepDay \
+                FROM Kids AS k \
+                WHERE k.activity == '"'Sleep'"' AND (k.activityHour BETWEEN 5 AND 18) AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
+                     AND (k.DurationMin BETWEEN ? AND ?) \
+                GROUP BY k.kidID, k.activityAgeDays) as SumDays \
+            GROUP BY SumDays.ID, SumDays.AgeMonths', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -34,7 +37,7 @@ dfData2.columns = ['day' + 'k' + str(col) for col in dfData2.columns] # append t
 
 # calculate the meta information
 dfmeta = pd.DataFrame(dfData2.median(axis=1), columns={'sleepDay'})
-dfmeta['sleepDaySTD1'] = dfmeta['sleepDay'] + dfData2.std(axis=1) 
+dfmeta['sleepDaySTD1'] = dfmeta['sleepDay'] + dfData2.std(axis=1)
 dfmeta['sleepDaySTD2'] = dfmeta['sleepDay'] - dfData2.std(axis=1)
 
 dfmetaAll = dfmeta
@@ -43,11 +46,14 @@ dfDataAll = dfData2
 
 
 # Night
-c.execute('SELECT k.kidID, k.activityAgeMonths, 1.0*SUM(k.durationMin)/30 \
-            FROM Kids AS k \
-            WHERE k.activity == '"'Sleep'"' AND (k.activityHour < 5 OR k.activityHour >= 17) AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
-            	AND (k.DurationMin BETWEEN ? AND ?) \
-            GROUP BY k.kidID, k.activityAgeMonths', durations)
+c.execute('SELECT SumDays.ID, SumDays.AgeMonths, 1.0*AVG(SumDays.MinsSleepDay)\
+            FROM \
+              (SELECT k.kidID AS ID, k.activityAgeMonths AS AgeMonths, k.activityAgeDays AS AgeDays, 1.0*SUM(k.durationMin) AS MinsSleepDay \
+                FROM Kids AS k \
+                WHERE k.activity == '"'Sleep'"' AND  (k.activityHour < 5 OR k.activityHour >= 17)  AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
+                     AND (k.DurationMin BETWEEN ? AND ?) \
+                GROUP BY k.kidID, k.activityAgeDays) as SumDays \
+            GROUP BY SumDays.ID, SumDays.AgeMonths', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -59,7 +65,7 @@ dfData2.columns = ['night' + 'k' + str(col) for col in dfData2.columns] # append
 
 # calculate the meta information
 dfmeta = pd.DataFrame(dfData2.median(axis=1), columns={'sleepNight'})
-dfmeta['sleepNightSTD1'] = dfmeta['sleepNight'] + dfData2.std(axis=1) 
+dfmeta['sleepNightSTD1'] = dfmeta['sleepNight'] + dfData2.std(axis=1)
 dfmeta['sleepNightSTD2'] = dfmeta['sleepNight'] - dfData2.std(axis=1)
 
 # join th meta data set and the value data set
@@ -69,11 +75,14 @@ dfDataAll = dfDataAll.join(dfData2, how='left', lsuffix='app', rsuffix='web', so
 
 
 # Total
-c.execute('SELECT k.kidID, k.activityAgeMonths, 1.0*SUM(k.durationMin)/30 \
-            FROM Kids AS k \
-            WHERE k.activity == '"'Sleep'"' AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
-            	AND (k.DurationMin BETWEEN ? AND ?) \
-            GROUP BY k.kidID, k.activityAgeMonths', durations)
+c.execute('SELECT SumDays.ID, SumDays.AgeMonths, 1.0*AVG(SumDays.MinsSleepDay)\
+            FROM \
+              (SELECT k.kidID AS ID, k.activityAgeMonths AS AgeMonths, k.activityAgeDays AS AgeDays, 1.0*SUM(k.durationMin) AS MinsSleepDay \
+                FROM Kids AS k \
+                WHERE k.activity == '"'Sleep'"' AND (k.activityAgeMonths >= 0 AND k.activityAgeMonths <= 11)\
+                     AND (k.DurationMin BETWEEN ? AND ?) \
+                GROUP BY k.kidID, k.activityAgeDays) as SumDays \
+            GROUP BY SumDays.ID, SumDays.AgeMonths', durations)
 data = c.fetchall() # output is list of tuples
 
 # convert list of tuples to dict then to dataframe
@@ -85,7 +94,7 @@ dfData2.columns = ['total' + 'k' + str(col) for col in dfData2.columns] # append
 
 # calculate the meta information
 dfmeta = pd.DataFrame(dfData2.median(axis=1), columns={'sleepTotal'})
-dfmeta['sleepTotalSTD1'] = dfmeta['sleepTotal'] + dfData2.std(axis=1) 
+dfmeta['sleepTotalSTD1'] = dfmeta['sleepTotal'] + dfData2.std(axis=1)
 dfmeta['sleepTotalSTD2'] = dfmeta['sleepTotal'] - dfData2.std(axis=1)
 
 # join th meta data set and the value data set
